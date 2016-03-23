@@ -7,10 +7,10 @@ Product {
 
         cpp.commonCompilerFlags: ["-ffunction-sections", "-fdata-sections",
             "-fno-common", "-fno-strict-aliasing",
-            //"--specs=nosys.specs",
+            "--specs=nosys.specs",
         ]
         cpp.linkerFlags: [/*"-nostartfiles", "-nostdlib",*/
-            //"--specs=nosys.specs",
+            "--specs=nosys.specs",
             "-static", /*"-lc",*/ /*"-lm",*/ /*"-lgcc",*/
             "-Wl,--gc-sections",
         ]

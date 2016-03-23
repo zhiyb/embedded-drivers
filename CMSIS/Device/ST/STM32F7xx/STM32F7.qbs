@@ -8,9 +8,10 @@ Product {
     Depends {name: "CMSIS-FLAGS"}
     property var mcuFlags: ["-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16"]
     property var defines
+    cpp.optimization: "small"
     cpp.includePaths: ["Include"]
-    cpp.commonCompilerFlags: product.mcuFlags
-    cpp.linkerFlags: product.mcuFlags
+    cpp.commonCompilerFlags: mcuFlags
+    cpp.linkerFlags: mcuFlags
     cpp.defines: ["STM32", "STM32F7", "ARM_MATH_CM7", "__FPU_PRESENT=1"].concat(product.defines)
 
     Properties {
