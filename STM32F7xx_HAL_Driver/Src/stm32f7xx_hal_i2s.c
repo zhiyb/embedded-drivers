@@ -503,7 +503,7 @@ HAL_StatusTypeDef HAL_I2S_Transmit(I2S_HandleTypeDef *hi2s, uint16_t *pData, uin
       hi2s->Instance->DR = (*pData++);
       hi2s->TxXferCount--;   
       /* Wait until TXE flag is set */
-      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_TXE, SET, Timeout) != HAL_OK)
+      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_TXE, RESET, Timeout) != HAL_OK)
       {
         /* Set the error code and execute error callback*/
         hi2s->ErrorCode |= HAL_I2S_ERROR_TIMEOUT;
