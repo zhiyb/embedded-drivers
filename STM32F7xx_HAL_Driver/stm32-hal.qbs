@@ -1,7 +1,7 @@
 import qbs
 
 Product {
-    name: "stm32f7-HAL"
+    name: "STM32-HAL"
     type: "staticlibrary"
     Depends {name: "cpp"}
     Depends {name: "configurations"}

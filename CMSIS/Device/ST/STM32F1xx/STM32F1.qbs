@@ -41,5 +41,6 @@ Product {
     files: [
         "Include/stm32f1xx.h",
         "Include/system_stm32f1xx.h",
+        "Source/Templates/system_stm32f1xx.c",
     ]
 }

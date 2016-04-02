@@ -1,12 +1,13 @@
 import qbs
 
 Product {
-    name: "stm32f4-HAL"
+    name: "STM32-HAL"
     type: "staticlibrary"
     Depends {name: "cpp"}
     Depends {name: "configurations"}
     Depends {name: "CMSIS"}
 
+    cpp.optimization: "small"
     cpp.commonCompilerFlags: ["-Wno-unused-parameter"]
     cpp.defines: ["USE_HAL_DRIVER"]
     cpp.includePaths: ["Inc"]
