@@ -15,6 +15,7 @@ Project {
         Export {
             Depends {name: "cpp"}
 
+            cpp.positionIndependentCode: false
             cpp.commonCompilerFlags: ["-ffunction-sections", "-fdata-sections",
                 "-fno-common", "-fno-strict-aliasing",
                 "--specs=nosys.specs",
