@@ -12,7 +12,7 @@ Product {
     cpp.includePaths: ["Include"]
     cpp.commonCompilerFlags: mcuFlags
     cpp.linkerFlags: mcuFlags
-    cpp.defines: ["STM32", "STM32F7", "ARM_MATH_CM7", "__FPU_PRESENT=1"].concat(product.defines)
+    cpp.defines: ["ARM_MATH_CM7", "__FPU_PRESENT=1"].concat(defines)
 
     Properties {
         condition: project.device.startsWith("STM32F745")
@@ -33,11 +33,11 @@ Product {
         cpp.includePaths: ["Include"]
         cpp.commonCompilerFlags: product.mcuFlags
         cpp.linkerFlags: product.mcuFlags
-        cpp.defines: ["STM32", "STM32F7", "ARM_MATH_CM7", "__FPU_PRESENT=1"].concat(product.defines)
+        cpp.defines: ["ARM_MATH_CM7", "__FPU_PRESENT=1"].concat(product.defines)
     }
 
     Group {
-        name: "STM32F745"
+        name: "STM32F745xx"
         condition: project.device.startsWith("STM32F745")
         files: [
             "Include/stm32f745xx.h",
@@ -45,7 +45,7 @@ Product {
         ]
     }
     Group {
-        name: "STM32F746"
+        name: "STM32F746xx"
         condition: project.device.startsWith("STM32F746")
         files: [
             "Include/stm32f746xx.h",
@@ -53,7 +53,7 @@ Product {
         ]
     }
     Group {
-        name: "STM32F756"
+        name: "STM32F756xx"
         condition: project.device.startsWith("STM32F756")
         files: [
             "Include/stm32f756xx.h",

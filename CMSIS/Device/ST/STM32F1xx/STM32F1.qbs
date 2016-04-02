@@ -11,7 +11,7 @@ Product {
     cpp.includePaths: ["Include"]
     cpp.commonCompilerFlags: product.mcuFlags
     cpp.linkerFlags: product.mcuFlags
-    cpp.defines: ["STM32", "STM32F1", "ARM_MATH_CM3", "__FPU_PRESENT=1U"].concat(product.defines)
+    cpp.defines: ["ARM_MATH_CM3"].concat(defines)
 
     Properties {
         condition: (project.device.search("STM32F103.8") != -1) ||
@@ -25,7 +25,7 @@ Product {
         cpp.includePaths: ["Include"]
         cpp.commonCompilerFlags: product.mcuFlags
         cpp.linkerFlags: product.mcuFlags
-        cpp.defines: ["STM32", "STM32F1", "ARM_MATH_CM3", "__FPU_PRESENT=1U"].concat(product.defines)
+        cpp.defines: ["ARM_MATH_CM3"].concat(product.defines)
     }
 
     Group {
