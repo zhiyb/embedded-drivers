@@ -11,7 +11,7 @@ Product {
     cpp.includePaths: ["Include"]
     cpp.commonCompilerFlags: product.mcuFlags
     cpp.linkerFlags: product.mcuFlags
-    cpp.defines: ["STM32", "STM32F4", "ARM_MATH_CM7", "__FPU_PRESENT=1U"].concat(product.defines)
+    cpp.defines: ["STM32", "STM32F4", "ARM_MATH_CM4", "__FPU_PRESENT=1U"].concat(product.defines)
 
     Properties {
         condition: project.device.startsWith("STM32F429")
