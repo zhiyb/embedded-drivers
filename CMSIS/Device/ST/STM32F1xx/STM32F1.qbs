@@ -6,12 +6,13 @@ Product {
     condition: project.device.startsWith("STM32F1")
     Depends {name: "cpp"}
     Depends {name: "CMSIS-FLAGS"}
-    property var mcuFlags: ["-mthumb", "-mcpu=cortex-m3"]
+    property var mcuFlags: ["-mthumb", "-mcpu=cortex-m3", "-mfloat-abi=soft", "-msoft-float"]
     property var defines
     cpp.includePaths: ["Include"]
     cpp.commonCompilerFlags: product.mcuFlags
     cpp.linkerFlags: product.mcuFlags
-    cpp.defines: ["ARM_MATH_CM3"].concat(defines)
+    cpp.defines: ["ARM_MATH_CM3", "VECT_TAB_SRAM"].concat(defines)
+    cpp.optimization: "small"
 
     Properties {
         condition: (project.device.search("STM32F103.8") != -1) ||
@@ -25,7 +26,7 @@ Product {
         cpp.includePaths: ["Include"]
         cpp.commonCompilerFlags: product.mcuFlags
         cpp.linkerFlags: product.mcuFlags
-        cpp.defines: ["ARM_MATH_CM3"].concat(product.defines)
+        cpp.defines: ["ARM_MATH_CM3", "VECT_TAB_SRAM"].concat(product.defines)
     }
 
     Group {

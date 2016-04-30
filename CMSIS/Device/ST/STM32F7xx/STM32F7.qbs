@@ -6,7 +6,7 @@ Product {
     condition: project.device.startsWith("STM32F7")
     Depends {name: "cpp"}
     Depends {name: "CMSIS-FLAGS"}
-    property var mcuFlags: ["-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16"]
+    property var mcuFlags: ["-mcpu=cortex-m7", "-mlittle-endian", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-mthumb"]
     property var defines
     cpp.optimization: "small"
     cpp.includePaths: ["Include"]

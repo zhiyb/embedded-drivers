@@ -19,6 +19,7 @@ Product {
     ]
     cpp.commonCompilerFlags: ["-Wno-unused-parameter"]
     cpp.includePaths: includePaths
+    cpp.optimization: "small"
 
     Export {
         Depends {name: "cpp"}
