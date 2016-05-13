@@ -40,6 +40,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 
+#if 0
 /** @addtogroup STM32F1xx_HAL_Driver
   * @{
   */
@@ -109,3 +110,4 @@ void HAL_PPP_MspDeInit(void)
   */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+#endif
