@@ -2,7 +2,6 @@ import qbs
 
 Product {
     name: "CMSIS-STM32F1"
-    type: "staticlibrary"
     condition: project.device.startsWith("STM32F1")
     Depends {name: "CMSIS-FLAGS"}
 
