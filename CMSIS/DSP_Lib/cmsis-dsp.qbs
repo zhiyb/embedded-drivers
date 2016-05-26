@@ -8,7 +8,5 @@ Product {
     Depends {name: "CMSIS"}
     cpp.optimization: "fastest"
 
-    files: [
-        "Source/*/*.c",
-    ]
+    files: ["Source/*/*.c"]
 }

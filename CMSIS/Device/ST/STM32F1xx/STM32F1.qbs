@@ -2,12 +2,10 @@ import qbs
 
 Product {
     name: "CMSIS-STM32F1"
-    condition: project.device.startsWith("STM32F1")
-    Depends {name: "CMSIS-FLAGS"}
+    condition: project.device.search("STM32F1") != -1
 
     Export {
         Depends {name: "cpp"}
-        Depends {name: "CMSIS-FLAGS"}
         cpp.includePaths: ["Include"]
         cpp.commonCompilerFlags: ["-mthumb", "-mcpu=cortex-m3", "-mfloat-abi=soft", "-msoft-float"]
         cpp.linkerFlags: ["-mthumb", "-mcpu=cortex-m3", "-mfloat-abi=soft", "-msoft-float"]
