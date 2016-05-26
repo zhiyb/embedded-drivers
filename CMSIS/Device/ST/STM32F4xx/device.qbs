@@ -10,10 +10,20 @@ Product {
         cpp.linkerFlags: ["-mthumb", "-mcpu=cortex-m4", "-mfloat-abi=hard", "-mfpu=fpv4-sp-d16"]
         cpp.defines: {
             var def = ["ARM_MATH_CM4", "__FPU_PRESENT=1U"];
-            if (project.device.search("STM32F429") != -1)
+            if (project.device.search("STM32F411.C") != -1 ||
+                project.device.search("STM32F411.E") != -1)
+                def.push("STM32F411xE");
+            else if (project.device.search("STM32F429") != -1)
                 def.push("STM32F429xx");
             return def;
         }
+    }
+
+    Group {
+        name: "STM32F411xC STM32F411xE"
+        condition: project.device.search("STM32F411.C") != -1 ||
+                   project.device.search("STM32F411.E") != -1
+        files: ["Include/stm32f411xe.h"]
     }
 
     Group {

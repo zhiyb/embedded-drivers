@@ -10,8 +10,8 @@ Product {
         cpp.linkerFlags: ["-mthumb", "-mcpu=cortex-m3", "-mfloat-abi=soft", "-msoft-float"]
         cpp.defines: {
             var def = ["ARM_MATH_CM3"];
-            if ((project.device.search("STM32F103.8") != -1) ||
-                (project.device.search("STM32F103.B") != -1))
+            if (project.device.search("STM32F103.8") != -1 ||
+                project.device.search("STM32F103.B") != -1)
                 def.push("STM32F103xB");
             return def;
         }
@@ -19,8 +19,8 @@ Product {
 
     Group {
         name: "STM32F103x8 STM32F103xB"
-        condition: (project.device.search("STM32F103.8") != -1) ||
-                   (project.device.search("STM32F103.B") != -1)
+        condition: project.device.search("STM32F103.8") != -1 ||
+                   project.device.search("STM32F103.B") != -1
         files: ["Include/stm32f103xb.h"]
     }
 
