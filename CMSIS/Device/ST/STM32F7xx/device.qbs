@@ -1,8 +1,7 @@
 import qbs
 
 Product {
-    name: "CMSIS-STM32F7"
-    condition: project.device.search("STM32F7") != -1
+    name: "CMSIS-DEVICE"
 
     Export {
         Depends {name: "cpp"}
