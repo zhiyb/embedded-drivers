@@ -14,6 +14,7 @@ Product {
 
     Depends {name: "cc3200-sdk"}
     Depends {name: "cc3200-sdk-driverlib"}
+    Depends {name: "cc3200-sdk-simplelink_extlib-provisioninglib"}
 
     Properties {
         condition: project.target != "NONOS"
@@ -22,6 +23,7 @@ Product {
 
     Export {
         Depends {name: "cpp"}
+        Depends {name: "cc3200-sdk-simplelink_extlib-provisioninglib"}
         cpp.includePaths: ["include"]
         cpp.defines: product.cpp.defines
     }
