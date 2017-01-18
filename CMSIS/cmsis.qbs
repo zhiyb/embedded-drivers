@@ -28,8 +28,9 @@ Project {
                 "-fno-common", "-fno-strict-aliasing",
             ]
             cpp.linkerFlags: [
-                /*"-nostartfiles", "-nostdlib",*/
-                "--specs=nosys.specs",
+                //"-nostartfiles",
+                //"-nostdlib",
+                "--specs=nano.specs",
                 "-static", /*"-lc",*/ /*"-lm",*/ /*"-lgcc",*/
                 "-Wl,--gc-sections",
             ]
