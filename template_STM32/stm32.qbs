@@ -1,42 +1,39 @@
 import qbs
 
 Project {
-    property string driversDir: "../Drivers"
-    property string device: "STM32F103C8T6"
-    property bool build_CMSIS_DSP: false
+    property string driversDir: "embedded-drivers"
+    property string device: "STM32F429ZIT6"
+    property bool cmsis_dsp: false
 
     references: [
         driversDir + "/CMSIS/cmsis.qbs",
-        driversDir + "/STM32F1xx_HAL_Driver",
     ]
 
     Product {
-        name: "configurations"
+        type: "application"
+        Depends {name: "cpp"}
+        Depends {name: "CMSIS"}
+        cpp.includePaths: ["."]
+        cpp.linkerFlags: ["-nostartfiles"]
+        //cpp.linkerFlags: ["-nostdlib"]
+        cpp.assemblerName: "gcc"
+        cpp.assemblerFlags: ["-c"]
 
-        Export {
-            Depends {name: "cpp"}
-            cpp.includePaths: ["Inc"]
-
-            Properties {
-                condition: qbs.buildVariant == "release"
-                cpp.optimization: "small"
-            }
+        Properties {
+            condition: qbs.buildVariant == "release"
+            cpp.optimization: "small"
         }
 
         files: [
-            "Inc/stm32f1xx_hal_conf.h",
+            "*.h",
+            "*.c",
+            "*.s",
         ]
-    }
 
-    CppApplication {
-        Depends {name: "CMSIS"}
-        Depends {name: "STM32-HAL"}
-        Depends {name: "configurations"}
-        cpp.linkerScripts: ["STM32F103C8_FLASH.ld"]
-        cpp.includePaths: ["Inc"]
-
-        files: [
-            "Src/main.c",
-        ]
+        Group {
+            name: "Linker script"
+            files: ["STM32F429ZI_FLASH.ld"]
+            fileTags: ["linkerscript"]
+        }
     }
 }
