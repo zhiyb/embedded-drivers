@@ -34,6 +34,8 @@ Project {
                 "-static", /*"-lc",*/ /*"-lm",*/ /*"-lgcc",*/
                 "-Wl,--gc-sections",
             ]
+            cpp.assemblerName: "gcc"
+            cpp.assemblerFlags: cpp.commonCompilerFlags.concat("-c")
             cpp.includePaths: ["Include"]
         }
     }
