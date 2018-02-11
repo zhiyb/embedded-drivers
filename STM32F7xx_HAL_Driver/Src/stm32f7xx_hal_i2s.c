@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32f7xx_hal_i2s.c
   * @author  MCD Application Team
-  * @version V1.0.4
-  * @date    09-December-2015
   * @brief   I2S HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the Integrated Interchip Sound (I2S) peripheral:
@@ -109,7 +107,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -330,10 +328,10 @@ HAL_StatusTypeDef HAL_I2S_Init(I2S_HandleTypeDef *hi2s)
   tmpreg |= (uint16_t)((uint16_t)SPI_I2SCFGR_I2SMOD | (uint16_t)(hi2s->Init.Mode | \
                        (uint16_t)(hi2s->Init.Standard | (uint16_t)(hi2s->Init.DataFormat | \
                        (uint16_t)hi2s->Init.CPOL))));
-  
+
   /* Write to SPIx I2SCFGR */  
-  hi2s->Instance->I2SCFGR = tmpreg;
-  
+  hi2s->Instance->I2SCFGR = tmpreg;    
+
   hi2s->ErrorCode = HAL_I2S_ERROR_NONE;
   hi2s->State= HAL_I2S_STATE_READY;
   
@@ -503,7 +501,7 @@ HAL_StatusTypeDef HAL_I2S_Transmit(I2S_HandleTypeDef *hi2s, uint16_t *pData, uin
       hi2s->Instance->DR = (*pData++);
       hi2s->TxXferCount--;   
       /* Wait until TXE flag is set */
-      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_TXE, RESET, Timeout) != HAL_OK)
+      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_TXE, SET, Timeout) != HAL_OK)
       {
         /* Set the error code and execute error callback*/
         hi2s->ErrorCode |= HAL_I2S_ERROR_TIMEOUT;
@@ -616,7 +614,7 @@ HAL_StatusTypeDef HAL_I2S_Receive(I2S_HandleTypeDef *hi2s, uint16_t *pData, uint
     while(hi2s->RxXferCount > 0)
     {
       /* Wait until RXNE flag is set */
-      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_RXNE, RESET, Timeout) != HAL_OK)
+      if (I2S_WaitFlagStateUntilTimeout(hi2s, I2S_FLAG_RXNE, SET, Timeout) != HAL_OK) 
       {
         /* Set the error code and execute error callback*/
         hi2s->ErrorCode |= HAL_I2S_ERROR_TIMEOUT;
@@ -1347,7 +1345,7 @@ static uint32_t I2S_GetClockFreq(I2S_HandleTypeDef *hi2s)
   /* I2S_CLK_x : I2S Block Clock configuration for different clock sources selected */
   switch(hi2s->Init.ClockSource)
   {
-    case I2S_CLOCK_SYSCLK :
+    case I2S_CLOCK_PLL :
     {
       /* Configure the PLLI2S division factor */
       /* PLLI2S_VCO Input  = PLL_SOURCE/PLLI2SM */ 
